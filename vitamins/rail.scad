@@ -31,10 +31,10 @@ function rail_bore(type)       = type[5];   //! Counter bore diameter for screw 
 function rail_hole(type)       = type[6];   //! Screw hole diameter
 function rail_bore_depth(type) = type[7];   //! Counter bore depth
 function rail_screw(type)      = type[8];   //! Screw type
-function rail_carriage(type)   = type[9];   //! Carriage type
-function rail_end_screw(type)  = type[10];  //! Screw used for ends only (Countersink used for better location)
+//function rail_carriage(type)   = type[9];   //! Carriage type
+function rail_end_screw(type)  = type[9];  //! Screw used for ends only (Countersink used for better location)
 function rail_screw_height(type, screw) = rail_height(type) - rail_bore_depth(type) + screw_head_depth(screw, rail_hole(type)); //! Position screw taking into account countersink into counterbored hole
-function rail_travel(type, length) = length - carriage_length(rail_carriage(type)); //! How far the carriage can travel
+//function rail_travel(type, length) = length - carriage_length(rail_carriage(type)); //! How far the carriage can travel
 
 function carriage_length(type)       = type[0]; //! Overall length
 function carriage_block_length(type) = type[1]; //! Length of the metal part
@@ -166,11 +166,11 @@ module rail(type, length) { //! Draw the specified rail
     }
 }
 
-module rail_assembly(type, length, pos, carriage_end_colour = grey20, carriage_wiper_colour = grey20) { //! Rail and carriage assembly
-    rail(type, length);
+module rail_assembly(rail_type, carriage_type, length, pos, carriage_end_colour = grey20, carriage_wiper_colour = grey20) { //! Rail and carriage assembly
+    rail(rail_type, length);
 
     translate([pos, 0])
-        carriage(rail_carriage(type), type,  carriage_end_colour, carriage_wiper_colour);
+        carriage(carriage_type, rail_type,  carriage_end_colour, carriage_wiper_colour);
 
 }
 

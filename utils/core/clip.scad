@@ -47,3 +47,6 @@ module clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax 
 
         box(xmin, ymin, zmin, xmax, ymax, zmax);
     }
+
+
+//box([-10,10,-10,10,-10,10]);
