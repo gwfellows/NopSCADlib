@@ -174,6 +174,17 @@ module rail_assembly(rail_type, carriage_type, length, pos, carriage_end_colour 
 
 }
 
+module double_rail_assembly(rail_type, carriage_type, length, pos, spacing, carriage_end_colour = grey20, carriage_wiper_colour = grey20) { //! Rail and 2 carriages assembly
+    rail(rail_type, length);
+
+    translate([pos - carriage_length(carriage_type)/2-spacing/2, 0])
+        carriage(carriage_type, rail_type,  carriage_end_colour, carriage_wiper_colour);
+
+    translate([pos + carriage_length(carriage_type)/2+ spacing/2, 0])
+        carriage(carriage_type, rail_type,  carriage_end_colour, carriage_wiper_colour);
+
+}
+
 module rail_screws(type, length, thickness, screws = 100) { //! Place screws in the rail
     screw = rail_screw(type);
     end_screw = rail_end_screw(type);
