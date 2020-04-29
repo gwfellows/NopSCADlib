@@ -155,7 +155,7 @@ module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]
 
     if(!naked)
         translate_z(inset - insulator_length)
-            e3d_fan();
+            rotate([0,0,90])e3d_fan();
 }
 
 module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) {
@@ -164,7 +164,7 @@ module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate 
     e3d_hot_end(type, filament, naked, resistor_wire_rotate);
 
     // Wire and ziptie
-    if(!naked)
+    /*if(!naked)
         rotate(10) {
             dia =  hot_end_insulator_diameter(type);
             scale([1, (bundle + dia) / dia])
@@ -182,4 +182,5 @@ module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate 
                     }
     }
 
+*/
 }
